@@ -35,10 +35,10 @@
             el.addEventListener('click',clickHandler);
         }
 
-            function clickHandler() {
-                inputIcon(this);
-                check();
-            }
+        function clickHandler() {
+            inputIcon(this);
+            check(this);
+        }
         function inputIcon(element)
         {
             let icon;
@@ -61,10 +61,8 @@
             }        
         }
 
-        function check()
+        function check(element)
         {
-            for(let element of cellArray)
-            {
                 if(element.classList.length!=0)
                 {
                     let coordinate = element.id;
@@ -92,7 +90,6 @@
                             }
                             if(flag == true)
                             {
-                                console.log("WONNNN")
                                 for(let el of cellArray)
                                 {
                                     el.removeEventListener('click',clickHandler);
@@ -119,7 +116,7 @@
                     }
                     if(flag == true)
                             {
-                                console.log("WONNNN")
+                               
                                 for(let el of cellArray)
                                 {
                                     el.removeEventListener('click',clickHandler);
@@ -133,7 +130,6 @@
                     if(((cellArray[0].classList[0]==cellArray[4].classList[0]) && (cellArray[4].classList[0]==cellArray[8].classList[0]))||
                     ((cellArray[2].classList[0]==cellArray[4].classList[0]) && (cellArray[4].classList[0]==cellArray[6].classList[0])))
                         {
-                            console.log("WONNNN")
                                 for(let el of cellArray)
                                 {
                                     el.removeEventListener('click',clickHandler);
@@ -145,7 +141,7 @@
         
 
                 }
-            }
+            
         }
     </script>
 </body>
