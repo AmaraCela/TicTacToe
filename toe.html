@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic tac toe</title>
+    <link rel="stylesheet" href="toe.css">
+</head>
+<body>
+    <div>
+        <table border="1">
+            <tr>
+                <td id="00" class=""></td>
+                <td id="01" class=""></td>
+                <td id="02" class=""></td>
+            </tr>
+            <tr>
+                <td id="10" class=""></td>
+                <td id="11" class=""></td>
+                <td id="12" class=""></td>
+            </tr>
+            <tr>
+                <td id="20" class=""></td>
+                <td id="21"class=""></td>
+                <td id="22" class=""></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let cellArray = document.getElementsByTagName("td");
+        let num = 1;
+        for(let el of cellArray)
+        {
+            el.addEventListener('click',clickHandler);
+        }
+
+            function clickHandler() {
+                inputIcon(this);
+                check();
+            }
+        function inputIcon(element)
+        {
+            let icon;
+            if(element.classList.length==0)
+            {
+                icon = document.createElement("img");
+                num++;
+                if(num%2==0)
+                {
+                    element.classList.add("x");  
+                    icon.setAttribute('src','x.png');   
+                }
+                else{
+                    element.classList.add("o");  
+                    icon.setAttribute('src','o.png');   
+                }
+
+                
+                element.appendChild(icon);
+            }        
+        }
+
+        function check()
+        {
+            for(let element of cellArray)
+            {
+                if(element.classList.length!=0)
+                {
+                    let coordinate = element.id;
+                    let x = parseInt(coordinate[0]);
+                    let y = parseInt(coordinate[1]);
+                    let initx = x * (-1);
+                    let inity = y * (-1);
+                    let flag = true; 
+                    for(let i=0;i<3;i++)
+                            {
+                                if(cellArray[3*x+y+inity].classList.length!=0)
+                                {
+                                    if(cellArray[3*x+y+inity].classList[0]!=element.classList[0])
+                                    {
+                                        flag = false;
+                                        break;
+                                    }
+                                    inity++;
+                                }
+                                else{
+                                    flag = false;
+                                    break;
+                                }
+
+                            }
+                            if(flag == true)
+                            {
+                                console.log("WONNNN")
+                                for(let el of cellArray)
+                                {
+                                    el.removeEventListener('click',clickHandler);
+                                }  
+                                return; 
+                            }
+                    
+                    flag = true;
+                    for(let i=0;i<3;i++)
+                    {
+                        if(cellArray[3*(x+initx)+y].classList.length!=0)
+                        {
+                            if(cellArray[3*(x+initx)+y].classList[0]!=element.classList[0])
+                            {
+                                flag = false;
+                                break;
+                            }
+                            initx++;
+                        }
+                        else{
+                            flag = false;
+                            break;
+                            }
+                    }
+                    if(flag == true)
+                            {
+                                console.log("WONNNN")
+                                for(let el of cellArray)
+                                {
+                                    el.removeEventListener('click',clickHandler);
+                                }  
+                                return; 
+                            }
+
+                    if((cellArray[0].classList.length!=0 && cellArray[4].classList.length!=0 && cellArray[8].classList.length!=0) ||
+                    (cellArray[2].classList.length!=0 && cellArray[6].classList.length!=0 && cellArray[4].classList.length!=0))
+                    {
+                    if(((cellArray[0].classList[0]==cellArray[4].classList[0]) && (cellArray[4].classList[0]==cellArray[8].classList[0]))||
+                    ((cellArray[2].classList[0]==cellArray[4].classList[0]) && (cellArray[4].classList[0]==cellArray[6].classList[0])))
+                        {
+                            console.log("WONNNN")
+                                for(let el of cellArray)
+                                {
+                                    el.removeEventListener('click',clickHandler);
+                                }  
+                                return; 
+                        }
+                    }
+
+        
+
+                }
+            }
+        }
+    </script>
+</body>
+</html>

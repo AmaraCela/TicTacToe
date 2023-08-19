@@ -1,0 +1,25 @@
+body{
+    display: flex;
+    background-color: gray;
+}
+.board{
+    height: 400px;
+    width: 400px;
+}
+
+div{
+    width: 100%;
+    display: flex;
+    position: relative;
+    /* left: 450px; */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 100px;
+}
+
+td{
+    height: 100px;
+    width: 100px;
+    background-color: white;
+}
