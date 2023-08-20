@@ -1,4 +1,5 @@
 let cellArray = document.getElementsByTagName("td");
+let p = document.getElementById("result-p");
         let num = 1;
         for(let el of cellArray)
         {
@@ -58,7 +59,7 @@ let cellArray = document.getElementsByTagName("td");
                             }
                         if(flag == true)
                         {
-                            win();
+                            win(element.classList[0]);
                             return; 
                         }
                     
@@ -82,7 +83,7 @@ let cellArray = document.getElementsByTagName("td");
                     if(flag == true)
                             {
                                
-                                win();
+                                win(element.classList[0]);
                                 return; 
                             }   
                     if((cellArray[0].classList.length!=0 && cellArray[4].classList.length!=0 && cellArray[8].classList.length!=0) ||
@@ -91,7 +92,7 @@ let cellArray = document.getElementsByTagName("td");
                     if(((cellArray[0].classList[0]==cellArray[4].classList[0]) && (cellArray[4].classList[0]==cellArray[8].classList[0]))||
                     ((cellArray[2].classList[0]==cellArray[4].classList[0]) && (cellArray[4].classList[0]==cellArray[6].classList[0])))
                         {
-                               win();
+                            win(element.classList[0]);
                                 return; 
                         }
                     }
@@ -99,10 +100,12 @@ let cellArray = document.getElementsByTagName("td");
                     
         }
 
-        function win()
+        function win(xoro)
         {
             for(let el of cellArray)
             {
                 el.removeEventListener('click',clickHandler);
+                p.innerText = xoro.toUpperCase() + " has won";
+                
             }  
         }

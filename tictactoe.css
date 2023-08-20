@@ -10,8 +10,6 @@ body{
 div{
     width: 100%;
     display: flex;
-    position: relative;
-    /* left: 450px; */
     justify-content: center;
     align-items: center;
     position: relative;
